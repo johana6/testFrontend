@@ -54,7 +54,7 @@
                         <div class="panel panel-default">
                             <div class="panel-body">
                                 <div class="alert alert-info"><center>Por favor seleccione la ciudad de origen para continuar con la reserva</center></div>
-                                <form id="consulta">
+                                <form>
                                     <div clas="row">
                                         <div class="col-sm-6">
                                             <label>Ciudad origen</label>
@@ -112,18 +112,23 @@
                                                 <input type="email" class="form-control" name="correo" required>
                                             </div>
 
-                                            <div class="col-sm-6" style="margin-top:15px;">
-                                                <input type="submit" class="btn" value="Filtrar" style="width: 100%;
-                                                       background-color: #119ee4;
-                                                       color: white;">
+                                          
+                                        </div>  
+                                        
+                                         <div clas="row">
+                                          <div class="col-sm-12" style="margin-top:15px;">
+                                                <input type="submit" class="btn" value="Filtrar" style="width: 100%; background-color: #119ee4;color: white;">
                                             </div>
-                                        </div>    
+                                         </div>    
                                     </div>  
                                 </form>
                             </div> 
                         </div>
                     </div> 
                 </div>
+
+
+
             </div>
 
             <div class="col-lg-6" >
@@ -137,22 +142,18 @@
 
                                 <div class="alert alert-info"><center>Filtrar por fecha y por trayecto.</center></div>
 
-                                <form id="consulta">
+                                <form  id="consultaVuelo" name="consultaVuelo">
                                     <div class="col-sm-6">
                                         <label>Ciudad origen</label>
-                                        <select class="form-control" name="tipo" id="tipo" required>
+                                        <select class="form-control" name="ciudadOrigenConsulta" id="ciudadOrigenConsulta" required>
                                             <option value="">Seleccione...</option>
-                                            <option value="Bogota">Bogota</option>
-                                            <option value="Cali">Cali</option>
                                         </select>
                                     </div>
 
                                     <div class="col-sm-6">
                                         <label>Ciudad destino</label>
-                                        <select class="form-control" name="tipo" id="tipo" required>
+                                        <select class="form-control" name="ciudadOrigenConsultaDestino" id="ciudadOrigenConsultaDestino" required>
                                             <option value="">Seleccione...</option>
-                                            <option value="Bogota">Bogota</option>
-                                            <option value="Cali">Cali</option>
                                         </select>
                                     </div>
 
@@ -175,6 +176,25 @@
                         </div>
                     </div> 
                 </div>
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <div id="cargandoVuelos"></div>
+                        <table class="table">
+                            <thead style="    background-color: black;
+    color: white;">
+                                <tr>
+                                    <th scope="col">Ciudad origen</th>
+                                    <th scope="col">Ciudad destino</th>
+                                    <th scope="col">Fecha</th>
+                                    <th scope="col">Duracion</th>
+                                </tr>
+                            </thead>
+                            <tbody id="agragarCampos">
+                                
+                            </tbody>
+                    </div>
+                </div>
+            </div>
 
 
 
