@@ -51,79 +51,90 @@
                     <div class="panel-body">
 
                         <center><strong><h3 style="color: #5192cb;">Reservar tiquetes</h3></strong></center>
-                        <div class="panel panel-default">
-                            <div class="panel-body">
-                                <div class="alert alert-info"><center>Por favor seleccione la ciudad de origen para continuar con la reserva</center></div>
-                                <form>
+
+                        <div class="alert alert-info"><center>Por favor seleccione la ciudad de origen para continuar con la reserva</center></div>
+
+
+                        <form id="reservaTiquetes" name="reservaTiquetes">
+
+                            <div class="panel panel-default">
+                                <div class="panel-body">
                                     <div clas="row">
                                         <div class="col-sm-6">
                                             <label>Ciudad origen</label>
-                                            <select  class="form-control" name="ciudadOrigen" id="ciudadOrigen" required>
+                                            <select  class="form-control" name="ciudadOrigenI" id="ciudadOrigen" required>
                                                 <option value="">Seleccione...</option>
                                             </select>
                                         </div>
 
                                         <div class="col-sm-6" id="divDestino">
                                             <label>Ciudad destino</label>
-                                            <select  class="form-control" name="ciudadDestino" id="ciudadDestino" required>
+                                            <select  class="form-control" name="ciudadDestinoI" id="ciudadDestino" required>
                                                 <option value="">Seleccione...</option>
                                             </select>
                                         </div>
                                         <div id="cargando"></div>
                                     </div>
-
+                                   
                                     <div id="camposPersonales">  
                                         <div clas="row">
                                             <div class="col-sm-6">
                                                 <label>Nombres</label>
-                                                <input type="text" class="form-control" name="nombres" required>
+                                                <input type="text" class="form-control" name="nombresI" required>
                                             </div>
                                             <div class="col-sm-6">
                                                 <label>Apellido</label>
-                                                <input type="text" class="form-control" name="apellidos" required>
+                                                <input type="text" class="form-control" name="apellidosI" required>
                                             </div>
                                         </div>   
 
                                         <div clas="row">
                                             <div class="col-sm-6">
                                                 <label>Cedula</label>
-                                                <input type="number" class="form-control" name="cedula" required placeholder="123456789">
+                                                <input type="number" class="form-control" name="cedulaI" required placeholder="123456789">
                                             </div>
                                             <div class="col-sm-6">
                                                 <label>Telefono</label>
-                                                <input type="number" class="form-control" name="telefono" required placeholder="123456789">
+                                                <input type="number" class="form-control" name="telefonoI" required placeholder="123456789">
                                             </div>
                                         </div>
 
                                         <div clas="row">
                                             <div class="col-sm-6">
                                                 <label>Fecha nacimiento</label>
-                                                <input type="date" class="form-control" name="fechaNacimiento" required>
+                                                <input type="date" class="form-control" name="fechaNacimientoI" required>
                                             </div>
                                             <div class="col-sm-6">
                                                 <label>Celular</label>
-                                                <input type="number" class="form-control" name="celular" required>
+                                                <input type="number" class="form-control" name="celularI" required>
                                             </div>
                                         </div>
 
                                         <div clas="row">
-                                            <div class="col-sm-6">
+                                            <div class="col-sm-12">
                                                 <label>Correo electronico</label>
-                                                <input type="email" class="form-control" name="correo" required>
+                                                <input type="email" class="form-control" name="correoI" required>
                                             </div>
-
-                                          
-                                        </div>  
-                                        
-                                         <div clas="row">
-                                          <div class="col-sm-12" style="margin-top:15px;">
-                                                <input type="submit" class="btn" value="Filtrar" style="width: 100%; background-color: #119ee4;color: white;">
-                                            </div>
-                                         </div>    
+                                        </div>
                                     </div>  
-                                </form>
-                            </div> 
-                        </div>
+
+                                </div> 
+                            </div>
+
+                            <div id="cargando2"></div>
+                            <div clas="row">
+                                <div class='panel panel-default'>
+                                    <div class='panel-body'>
+                                        <div id="divCheck"></div> 
+                                    </div>
+                                </div>   
+                            </div>   
+                            <div clas="row">
+                                <div class="col-sm-12" style="margin-top:15px;">
+                                    <input type="submit" class="btn" value="Filtrar" style="width: 100%; background-color: #119ee4;color: white;">
+                                </div>
+                            </div>    
+                        </form>
                     </div> 
                 </div>
 
@@ -181,7 +192,7 @@
                         <div id="cargandoVuelos"></div>
                         <table class="table">
                             <thead style="    background-color: black;
-    color: white;">
+                                   color: white;">
                                 <tr>
                                     <th scope="col">Ciudad origen</th>
                                     <th scope="col">Ciudad destino</th>
@@ -190,7 +201,7 @@
                                 </tr>
                             </thead>
                             <tbody id="agragarCampos">
-                                
+
                             </tbody>
                     </div>
                 </div>
