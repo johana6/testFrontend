@@ -17,6 +17,7 @@ $(document).ready(function () {
             //////UTILIZO EL FOR PARA RECORRER E IMPRIMIR CADA UNA DE LAS CIUDADES DE LA BD
             for (var i in result) {
                 output += "<option value='" + result[i].id + "'>" + result[i].nombre + "</option>";
+
             }
 
             output += "";
@@ -44,6 +45,7 @@ $(document).ready(function () {
 
             for (var i in result) {
                 output += "<option value='" + result[i].id + "'>" + result[i].nombre + "</option>";
+
             }
 
             output += "";
@@ -83,7 +85,7 @@ $(document).ready(function () {
             {
                 var result = jQuery.parseJSON(resulta);
 
-                var output = "";
+                var output = "<option>Ciudad de Origen</option>";
                 for (var i in result) {
                     output += "<option value='" + result[i].id + "'>" + result[i].nombre + "</option>";
                 }
@@ -98,16 +100,44 @@ $(document).ready(function () {
         mostrar('divDestino');
 
     });
-    
-    
+
+
     $("#ciudadDestino").change(function () {
+        var ciudadDestino = $(this).val();
+
         $("#cargando").html("");
+
         mostrar('camposPersonales');
 
-    });
-    
+        $("#cargando2").html("<center><img src='img/spinner1.gif' width='120px'></center>");
 
-    ////////////////FUNCION QUE SE EJECUTA CUANDO EL SELECT CIUDADORIGEN PARA FILTRO
+        $.ajax({
+            type: "GET",
+            url: "../backEnd/procesos.php?ciudadDDestino=" + ciudadDestino,
+            success: function (resulta)
+            {
+                var result = jQuery.parseJSON(resulta);
+                var output = "";
+
+                for (var i in result) {
+                    output += "<label><input type='checkbox' id='cbox1' value='" + result[i].id + "'>" + result[i].descripcion + "</label><br>";
+                    
+                }
+
+
+                output += "";
+                $("#divCheck").html(output);
+                $("#cargando2").html("");
+            }
+
+        });
+
+
+    });
+
+
+///<input type="checkbox" id="cbox1" value="first_checkbox"> Este es mi primer checkbox</label><br>
+////////////////FUNCION QUE SE EJECUTA CUANDO EL SELECT CIUDADORIGEN PARA FILTRO
 
     $("#ciudadOrigenConsulta").change(function () {
 
@@ -150,22 +180,22 @@ $(document).ready(function () {
             success: function (resulta) {
 
                 var result = jQuery.parseJSON(resulta);
-                
+
                 $("#tabla").html("");
-                
+
                 var output = "";
-                
+
                 for (var i in result) {
-          
-                     output +="<tr>"
-                        + "<td>" + result[i].ciudadOrigen + "</td>"
-                        + "<td>" + result[i].ciudadDestino + "</td>"
-                        + "<td>" + result[i].fecha_salida + "</td>"
-                        + "<td>" + result[i].duracion + "</td>"
-                    + "</tr>";
-                
+
+                    output += "<tr>"
+                            + "<td>" + result[i].ciudadOrigen + "</td>"
+                            + "<td>" + result[i].ciudadDestino + "</td>"
+                            + "<td>" + result[i].fecha_salida + "</td>"
+                            + "<td>" + result[i].duracion + "</td>"
+                            + "</tr>";
+
                 }
-                
+
                 output += "";
                 $("#cargandoVuelos").html("");
                 $("#agragarCampos").html(output);
@@ -173,5 +203,43 @@ $(document).ready(function () {
         });
         e.preventDefault();
     });
+
+
+    $("#reservaTiquetes").submit(function (e) {
+
+        $("#cargandoVuelos").html("<center><img src='img/spinner1.gif' width='120px'></center>");
+
+        var url = "../backEnd/procesos.php";
+        $.ajax({
+            type: "POST",
+            url: url,
+            data: $("#reservaTiquetes").serialize(),
+            success: function (resulta) {
+
+                /*var result = jQuery.parseJSON(resulta);
+                 
+                 $("#tabla").html("");
+                 
+                 var output = "";
+                 
+                 for (var i in result) {
+                 
+                 output += "<tr>"
+                 + "<td>" + result[i].ciudadOrigen + "</td>"
+                 + "<td>" + result[i].ciudadDestino + "</td>"
+                 + "<td>" + result[i].fecha_salida + "</td>"
+                 + "<td>" + result[i].duracion + "</td>"
+                 + "</tr>";
+                 
+                 }
+                 
+                 output += "";
+                 $("#cargandoVuelos").html("");
+                 $("#agragarCampos").html(output);*/
+            }
+        });
+        e.preventDefault();
+    });
+
+
 });
-     
